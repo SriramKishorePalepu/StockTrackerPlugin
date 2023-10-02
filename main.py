@@ -3,7 +3,7 @@ import yfinance as yf
 
 app = FastAPI()
 
-@app.get("/stockTicker")
+@app.get("/stockTicker/{stockTkr}")
 async def root(stockTkr):
     stock = yf.Ticker(stockTkr)
     price = stock.info['currentPrice']
