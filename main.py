@@ -1,14 +1,11 @@
 from fastapi import FastAPI
-
 import yfinance as yf
-
-
 
 app = FastAPI()
 
 @app.get("/stockTicker")
-async def getStockPrice(stockTkr):
+async def root(stockTkr):
     stock = yf.Ticker(stockTkr)
     price = stock.info['currentPrice']
-    print(price)
-    return {"message": "Stock price of " + stockTkr + " is "+ str(price)}
+    stockLongName = stock.info['longName']
+    return {"message": "Stock price of " + stockLongName + " is "+ str(price)}
