@@ -7,7 +7,7 @@ app = FastAPI()
 async def defaultRoute():
     return {"message": "Please update the url and include /stockTicker/ \"Name of the company\" e.g. /stockTicker/tsla and press enter"}
 
-@app.get("/currentstockprice/{stockTkr}")
+@app.get("/currentstockprice/{stockTicker}")
 async def getCurrentStockPriceUsingStockTicker(stockTicker : str):
     stock = yf.Ticker(stockTicker)
     price = stock.info['currentPrice']
